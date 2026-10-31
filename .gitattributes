@@ -1,0 +1,4 @@
+# Mod files must reach the game byte-for-byte: no line-ending conversion
+*.json -text
+*.png binary
+*.ps1 text eol=crlf
