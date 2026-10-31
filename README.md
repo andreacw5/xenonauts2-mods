@@ -16,6 +16,8 @@ BetterBase/   the mod as the game loads it (manifest.json, preview.png, template
 FinanceX3/    idem
 tools/        PowerShell scripts that generate the template files from the game's data
 vanilla/      game data extracted by tools/extract-vanilla.ps1 (git-ignored)
+docs/PRD.md   what each mod changes and why (Italian)
+CLAUDE.md     notes for Claude Code sessions working on this repo
 ```
 
 `manifest.json` and `preview.png` are edited by hand. Everything under `template/` is generated: change the values in the build scripts, not in the JSON.
