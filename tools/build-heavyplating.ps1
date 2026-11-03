@@ -1,11 +1,13 @@
 param(
+    [string]$VanillaDir = (Join-Path $PSScriptRoot '..\vanilla'),
     [string]$OutDir = (Join-Path $PSScriptRoot '..\ResearchTest')
 )
 # Writes the Heavy Plating test content into the Research Test mod: four armour tiers and four engineering
 # projects (Mk1-Mk4). These are new files, not edited vanilla templates, so they are written from scratch.
-# Mk1 is unlocked by the research modtest_heavy_plating_research. Mk2-Mk4 need the vanilla armour upgrade of
-# the same tier plus the previous Mk; each one makes its tier available in every base and upgrades the lower
-# Heavy Plating tiers already fitted, like the vanilla armour upgrades do. No vanilla file is touched.
+# Mk1 is unlocked by the research modtest_heavy_plating_research. Mk2-Mk4 appear together with the vanilla
+# armour upgrade of the same tier (same "Unlocks" prerequisites, read from vanilla/) and, like those, can only
+# be started once the previous tier is finished. Each one makes its tier available in every base and upgrades
+# the lower Heavy Plating tiers already fitted, like the vanilla armour upgrades do. No vanilla file is touched.
 $ErrorActionPreference = 'Stop'
 
 # tier -> armour, hull bonus, project cost, project duration master
@@ -69,10 +71,19 @@ foreach ($t in $tiers) {
 
     # Engineering project
     $item = "item/aircraft_equipment/$id.json"
-    $unlocks = if ($n -eq 1) { @('projects/research/modtest_heavy_plating_research.json') }
-               else { @("projects/engineering/aircraft_armour_tier$n.json", "projects/engineering/modtest_heavy_plating_mk$($n - 1).json") }
-    $prereq = @($unlocks | ForEach-Object { '{"Project":' + (Ref $_) + ',"Status":"Finished","Variant":"Unlocks","$t":"ProjectPq"}' }) +
-              @('{"Operator":"All","Number":0,"selector":{"Player":"xenonauts","$t":"PlayerSe"},"prerequisites":[{"value":' + (N $t.cost) + ',"Variant":"Cost","$t":"CashPq"}],"Variant":"Cost","$t":"ADelegatePq"}')
+    if ($n -eq 1) {
+        $prereq = @('{"Project":' + (Ref 'projects/research/modtest_heavy_plating_research.json') + ',"Status":"Finished","Variant":"Unlocks","$t":"ProjectPq"}')
+    } else {
+        # Copy the vanilla upgrade's unlock conditions verbatim; the previous Mk is a start condition ("Cost"),
+        # as the previous armour tier is for the vanilla upgrade
+        $vanilla = [IO.File]::ReadAllText((Join-Path $VanillaDir "template\strategy\projects\engineering\aircraft_armour_tier$n.json"))
+        $vanillaUnlocks = [regex]::Matches($vanilla, '\{"Project":\{"\$content":"[^"]+","\$t":"ar_Template"\},"Status":"[A-Za-z]+","Variant":"Unlocks","\$t":"ProjectPq"\}')
+        $allUnlocks = [regex]::Matches($vanilla, '"Variant":"Unlocks"').Count
+        if ($vanillaUnlocks.Count -eq 0 -or $vanillaUnlocks.Count -ne $allUnlocks) { throw "aircraft_armour_tier$n : unlock prerequisites are not all plain ProjectPq ($($vanillaUnlocks.Count) of $allUnlocks)" }
+        $prereq = @($vanillaUnlocks | ForEach-Object Value) +
+                  @('{"Project":' + (Ref "projects/engineering/modtest_heavy_plating_mk$($n - 1).json") + ',"Status":"Finished","Variant":"Cost","$t":"ProjectPq"}')
+    }
+    $prereq += @('{"Operator":"All","Number":0,"selector":{"Player":"xenonauts","$t":"PlayerSe"},"prerequisites":[{"value":' + (N $t.cost) + ',"Variant":"Cost","$t":"CashPq"}],"Variant":"Cost","$t":"ADelegatePq"}')
     $effects = @(
         '{"selector":{"Group":"Xenonauts.Strategy.Components.GeoBaseGroup","$t":"GEntitySe"},"effects":[{"Quantity":Infinity,"Rounding":"None","Item":' + (Ref $item) + ',"SlotType":{"$content":"Stores","$t":"MainBaseSlots"},"$t":"DeltaItemEffect"}],"$t":"AManyDelegateEffect"}'
         '{"selector":{"Tag":"Xenonauts.Common.CampaignTag","$t":"TaggedEntitySe"},"effects":[{"Quantity":Infinity,"Item":' + (Ref $item) + ',"SlotType":{"$content":"Stores","$t":"MainBaseSlots"},"$t":"AddItemToGeoBaseRequisitionEffect"}],"$t":"ADelegateEffect"}'

@@ -284,7 +284,8 @@ Con armatura 10 fissa la Heavy Plating della 0.3.0 era debole e diventava obsole
 | Velocità in combattimento | ×0,9 | ×0,9 | ×0,9 | ×0,9 |
 | Progetto di officina | $50.000 | $100.000 | $150.000 | $200.000 |
 
-- **Nessun file del gioco modificato.** Invece di aggiungere il passaggio Heavy N → N+1 ai progetti `aircraft_armour_tier2–4` del gioco (che andrebbe in conflitto con altre mod), ci sono quattro progetti di officina propri. Mk1 si sblocca con la ricerca "MOD TEST: Heavy Plating"; Mk2–Mk4 con il potenziamento delle corazze del gioco dello stesso tier più il Mk precedente.
+- **Nessun file del gioco modificato.** Invece di aggiungere il passaggio Heavy N → N+1 ai progetti `aircraft_armour_tier2–4` del gioco (che andrebbe in conflitto con altre mod), ci sono quattro progetti di officina propri. Mk1 si sblocca con la ricerca "MOD TEST: Heavy Plating".
+- **Mk2–Mk4 compaiono insieme al potenziamento delle corazze del gioco** dello stesso tier: lo script copia dai file del gioco i suoi prerequisiti di tipo `Unlocks` (le ricerche sulle leghe `abstract_ufo_hull_plating`, `abstract_advanced_alloys`, `abstract_alloys_ultradense`). Come nel gioco, dove il tier 3 si vede ma si avvia solo dopo il tier 2 (`ProjectPq` con `"Variant":"Cost"`), ogni Mk si avvia solo dopo il Mk precedente. Non serve aver fatto il potenziamento dell'Ablative.
 - **Ogni Mk** rende disponibile il suo tier in tutte le basi e aggiorna i tier Heavy inferiori già montati (`UpgradeItemsEffect`), come fanno i potenziamenti del gioco.
 - I tier 2–4 sono figli del tier 1 e ne ereditano icona, carico e aspetto sull'aereo.
 - I file sono generati da `tools/build-heavyplating.ps1`, con GUID derivati dal nome (rigenerare dà file identici). I file della 0.3.0 (`modtest_heavy_plating.json` oggetto e progetto) sono stati rimossi: i salvataggi fatti con la 0.3.0 non vanno riusati.
