@@ -272,6 +272,25 @@ L'immagine del progetto in officina era quella dei missili (copiata con la strut
 
 Ancora aperto dal test della 0.2.0: un intercettore **costruito dopo** la ricerca Reinforced Airframe riceve il pezzo rinforzato?
 
+### Versione 0.4.0: Heavy Plating Mk1–Mk4
+
+Con armatura 10 fissa la Heavy Plating della 0.3.0 era debole e diventava obsoleta alla prima ricerca sulle corazze del gioco (Ablative tier 2 = 12). Ora ha quattro tier, sempre un passo avanti all'Ablative, con un costo fisso:
+
+| | Mk1 | Mk2 | Mk3 | Mk4 |
+|---|---|---|---|---|
+| Armatura (Ablative) | 12 (6) | 18 (12) | 24 (18) | 30 (24) |
+| Punti struttura | +50 | +75 | +100 | +125 |
+| Carico | 5 (Ablative 3) | 5 | 5 | 5 |
+| Velocità in combattimento | ×0,9 | ×0,9 | ×0,9 | ×0,9 |
+| Progetto di officina | $50.000 | $100.000 | $150.000 | $200.000 |
+
+- **Nessun file del gioco modificato.** Invece di aggiungere il passaggio Heavy N → N+1 ai progetti `aircraft_armour_tier2–4` del gioco (che andrebbe in conflitto con altre mod), ci sono quattro progetti di officina propri. Mk1 si sblocca con la ricerca "MOD TEST: Heavy Plating"; Mk2–Mk4 con il potenziamento delle corazze del gioco dello stesso tier più il Mk precedente.
+- **Ogni Mk** rende disponibile il suo tier in tutte le basi e aggiorna i tier Heavy inferiori già montati (`UpgradeItemsEffect`), come fanno i potenziamenti del gioco.
+- I tier 2–4 sono figli del tier 1 e ne ereditano icona, carico e aspetto sull'aereo.
+- I file sono generati da `tools/build-heavyplating.ps1`, con GUID derivati dal nome (rigenerare dà file identici). I file della 0.3.0 (`modtest_heavy_plating.json` oggetto e progetto) sono stati rimossi: i salvataggi fatti con la 0.3.0 non vanno riusati.
+
+Da provare: Mk1 come nella 0.3.0 (armatura 12, Health +50 subito, carico 10/11). Mk2–Mk4 richiedono le ricerche sulle leghe del gioco, quindi si verificano solo più avanti in una partita.
+
 ## Idee per il futuro
 
 - Tempi di costruzione che scalano con gli ingegneri (richiede un plugin di codice, vedi sopra).

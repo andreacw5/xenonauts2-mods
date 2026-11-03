@@ -20,7 +20,7 @@ FinanceX3/        idem
 BetterAircraft/   idem
 AircraftWeapons/  idem
 AircraftCosts/    idem
-ResearchTest/     development test, never published: adds one empty research project (hand-written, no build script)
+ResearchTest/     development test, never published: new research, items and an icon (Heavy Plating files generated, the rest hand-written)
 tools/        PowerShell scripts that generate the template files from the game's data
 vanilla/      game data extracted by tools/extract-vanilla.ps1 (git-ignored)
 docs/PRD.md   what each mod changes and why (Italian)
@@ -69,6 +69,7 @@ Then bump the dependency version in each `manifest.json`, test in game, and uplo
 | `build-betteraircraft.ps1` | Writes Better Aircraft's aircraft profiles and masters (hull, speed, fuel use, repair) |
 | `build-aircraftweapons.ps1` | Writes Aircraft Weapons +25%'s weapon templates (damage x1.25) |
 | `build-aircraftcosts.ps1` | Writes Aircraft Costs -50%'s construction projects and upkeep multiplier |
+| `build-heavyplating.ps1` | Writes Research Test's Heavy Plating Mk1–Mk4 items and engineering projects (new files, not vanilla edits) |
 | `diff.ps1` | Lists every value a mod changes compared to `vanilla/` |
 | `preview-financex3.ps1` | Draws Finance x3's preview image (`-TitleOnly` for the published version) |
 | `preview-card.ps1` | Draws a title-only preview in the same style (used for the aircraft mods) |
