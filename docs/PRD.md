@@ -215,7 +215,21 @@ Domande a cui risponde:
 - il gioco carica i template **nuovi** aggiunti da una mod, non solo quelli sostituiti;
 - l'elenco delle ricerche viene fissato all'inizio della campagna: una mod che aggiunge ricerche richiede una nuova partita.
 
-Il passo successivo è dare alla ricerca un effetto vero (per esempio `UpgradeItemsEffect` su un'arma) e verificare che valga anche per gli aerei costruiti dopo.
+### Versione 0.2.0: ricerca con effetto vero
+
+Aggiunge altri due file nuovi:
+
+- `item/aircraft_equipment/modtest_armor_passiveregen_reinforced.json`: copia di `armor_passiveregen` (il pezzo di rigenerazione che tutti gli intercettori tier 1–3 montano di serie) con un modificatore `Xenonauts.Common.Stats.HitPoints` `Additive` +50. Nessun equipaggiamento aereo vanilla modifica i punti struttura; il componente e la forma del modificatore vengono dai moduli dell'esoscheletro (`groundcombat/item/attachment/module/simple/exosuit^extra_armour.json`).
+- `projects/research/modtest_reinforced_airframe.json`: ricerca "MOD TEST: Reinforced Airframe" senza prerequisiti che, finita, applica `UpgradeItemsEffect` da `armor_passiveregen` al pezzo rinforzato, con lo stesso `ProjectFSM` dei potenziamenti delle corazze (`engineering/aircraft_armour_tier2.json`).
+
+Domande a cui risponde:
+
+1. Un modificatore di punti struttura su un equipaggiamento funziona sugli aerei?
+2. Il potenziamento arriva agli intercettori già costruiti?
+3. Arriva anche a quelli costruiti dopo la ricerca?
+4. Nome e descrizione del pezzo nuovo si vedono?
+
+Valori attesi per l'Angel (intercettore tier 1): 100 → 150, oppure 150 → 200 con Better Aircraft attiva.
 
 ## Idee per il futuro
 
