@@ -254,6 +254,9 @@ Domande a cui risponde:
 2. A progetto finito, Heavy Plating compare con "∞" nella lista dello slot di equipaggiamento?
 3. Montata sull'Angel, mostra armatura 10 al posto di 6 e Health +50, e il carico sale a 10/11?
 4. Il nome e la descrizione si vedono nel tooltip?
+5. Si vede l'icona nuova (piastre rosso ruggine con una fascia gialla e nera)?
+
+**Icona.** Le immagini non sono tra i dati moddabili (`moddable_content.zip` contiene solo `.json`, `.csv`, `.txt`): stanno negli asset bundle. Dal manifest `generated_texture_strategy_1.manifest`, l'icona `ST-::-ui/aircraft_weapons/armor_tier1.png` è registrata come `Assets/Assets/xenonauts/texture/strategy/ui/aircraft_weapons/armor_tier1.png`. Per analogia con i template (`ST-::-` → `template/strategy/`), l'icona nuova sta in `ResearchTest/texture/strategy/ui/aircraft_weapons/modtest_heavy_plating.png` e la corazza la chiama `ST-::-ui/aircraft_weapons/modtest_heavy_plating.png`. È ricavata dall'icona dell'Ablative Plating, ritagliata da una schermata del gioco e ricolorata (l'originale non si può estrarre dal bundle senza strumenti esterni). Se lo slot mostra un'icona vuota, il gioco non carica immagini dalle mod: in quel caso si torna all'icona dell'Ablative Plating.
 
 ## Idee per il futuro
 

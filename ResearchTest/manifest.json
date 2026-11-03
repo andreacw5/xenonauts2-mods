@@ -3,7 +3,7 @@
     "asset": {
         "UID": "d1730dfb-728c-401f-88c4-613ddb85242f",
         "Name": "Research Test",
-        "Description": "Development test, not meant for publishing. Requires a new campaign.\n\nAdds three research projects, available from the start:\n- MOD TEST: Dummy Research: no effect.\n- MOD TEST: Reinforced Airframe: replaces the passive armour regeneration item of every interceptor with a reinforced version that adds 50 hull points.\n- MOD TEST: Heavy Plating: unlocks an engineering project ($50,000) that makes Heavy Plating available: +10 Armour and +50 hull points, payload 5 instead of 3, 15% slower in air combat.\n\nIt checks whether mods can add new research, engineering projects and equippable items.",
+        "Description": "Development test, not meant for publishing. Requires a new campaign.\n\nAdds three research projects, available from the start:\n- MOD TEST: Dummy Research: no effect.\n- MOD TEST: Reinforced Airframe: replaces the passive armour regeneration item of every interceptor with a reinforced version that adds 50 hull points.\n- MOD TEST: Heavy Plating: unlocks an engineering project ($50,000) that makes Heavy Plating available: +10 Armour and +50 hull points, payload 5 instead of 3, 15% slower in air combat. It uses its own icon, a recoloured Ablative Plating, to test custom images.\n\nIt checks whether mods can add new research, engineering projects, equippable items and images.",
         "Visibility": "Private",
         "Author": "andreacw96",
         "Website": "https://steamcommunity.com/id/andreacw96/",
