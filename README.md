@@ -20,6 +20,7 @@ FinanceX3/        idem
 BetterAircraft/   idem
 AircraftWeapons/  idem
 AircraftCosts/    idem
+ResearchTest/     development test, never published: adds one empty research project (hand-written, no build script)
 tools/        PowerShell scripts that generate the template files from the game's data
 vanilla/      game data extracted by tools/extract-vanilla.ps1 (git-ignored)
 docs/PRD.md   what each mod changes and why (Italian)

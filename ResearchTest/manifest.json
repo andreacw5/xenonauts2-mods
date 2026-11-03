@@ -1,0 +1,34 @@
+﻿{
+    "version": "0.1.0",
+    "asset": {
+        "UID": "d1730dfb-728c-401f-88c4-613ddb85242f",
+        "Name": "Research Test",
+        "Description": "Development test, not meant for publishing. Adds one research project, 'MOD TEST: Dummy Research', available from the start of a campaign. Completing it has no effect.\n\nIt checks whether the game loads a brand-new template file added by a mod, and whether a project can show its own name without a translation entry.",
+        "Visibility": "Private",
+        "Author": "andreacw96",
+        "Website": "https://steamcommunity.com/id/andreacw96/",
+        "Credits": "",
+        "Tags": [
+            "Test"
+        ],
+        "Dependencies": [
+            {
+                "UID": "7409d306-8813-4ae2-b2e2-8e94d4dc39f1",
+                "Version": {
+                    "&v": "7.28.0"
+                },
+                "DisplayName": "Xenonauts"
+            }
+        ],
+        "LoadBefore": [],
+        "LoadAfter": [],
+        "IncompatibleWith": [],
+        "RemoveFiles": [],
+        "SupportedLanguages": [
+            "en-US"
+        ],
+        "Version": "0.1.0",
+        "$t": "14"
+    },
+    "$t": "15"
+}

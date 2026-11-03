@@ -198,6 +198,20 @@ Incompatibile con qualsiasi mod che modifichi i progetti di costruzione degli ae
 | Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no | no |
 | Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
 
+## Prototipo: Research Test
+
+Cartella: `ResearchTest/` · Non va pubblicata.
+
+Serve a capire se si possono legare i bonus degli aerei a una ricerca nuova. Aggiunge un solo file **nuovo**, `template/strategy/projects/research/modtest_dummy_research.json`: una ricerca "MOD TEST: Dummy Research" senza prerequisiti (li eredita vuoti da `masters/projects/project.json`), 1.500 punti e nessun effetto. Il nome usa `LocalizableGUID` con `"Request":"Ignore"`, così il gioco mostra il testo del file senza voci nei file di traduzione.
+
+Domande a cui risponde:
+
+1. Il gioco carica un template nuovo aggiunto da una mod (finora le mod hanno solo sostituito file esistenti)?
+2. La ricerca compare in laboratorio dall'inizio, con il suo nome e la sua descrizione?
+3. Si completa senza errori?
+
+Se funziona, il passo successivo è dare alla ricerca un effetto vero (per esempio `UpgradeItemsEffect` su un'arma) e verificare che valga anche per gli aerei costruiti dopo.
+
 ## Idee per il futuro
 
 - Tempi di costruzione che scalano con gli ingegneri (richiede un plugin di codice, vedi sopra).
