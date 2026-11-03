@@ -268,6 +268,8 @@ Domande a cui risponde:
 
 L'immagine del progetto in officina era quella dei missili (copiata con la struttura del progetto): ora usa `ui/engineering/aircraft_armour_tier2.png`.
 
+**Correzione:** montando Heavy Plating la Health passava da 200/200 a 200/250 e l'aereo doveva "ripararsi" fino al nuovo massimo, quindi sembrava che la corazza togliesse punti struttura. Il modificatore `HitPoints` aveva `DeltaValue` 0 e `DeltaMaximum` 50, come i modificatori di armatura del gioco (l'armatura parte da 0 e si ricarica). Per i punti struttura servono entrambi a 50, come nel pezzo Reinforced Airframe che infatti dava subito 200/200: ora montandola si passa a 250/250. Regola: per `HitPoints` impostare sempre `DeltaValue` = `DeltaMaximum`.
+
 Ancora aperto dal test della 0.2.0: un intercettore **costruito dopo** la ricerca Reinforced Airframe riceve il pezzo rinforzato?
 
 ## Idee per il futuro

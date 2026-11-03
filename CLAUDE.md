@@ -43,7 +43,7 @@ Non toccare mai i file dentro la cartella del gioco: si lavora su `vanilla/` (es
 - Ricerche e progetti nuovi compaiono **solo in una nuova campagna**.
 - Nome e descrizione senza file di traduzione: `LocalizableGUID` con GUID nuovi e `"Request":"Ignore"`, più i componenti `Name` e `Description` con il testo.
 - Effetti utili nel `ProjectFSM` (`EntryEffects.Finished`): `UpgradeItemsEffect` sostituisce un oggetto su tutti gli aerei del giocatore (arriva anche agli aerei esistenti); `DeltaItemEffect` con `Quantity: Infinity` + `AddItemToGeoBaseRequisitionEffect` rendono un oggetto disponibile in tutte le basi. Modello: `projects/engineering/aircraft_missiles_all_tier1.json`.
-- Gli equipaggiamenti modificano l'aereo con il componente `Modifiers`; per i punti struttura il target è `Xenonauts.Common.Stats.HitPoints`.
+- Gli equipaggiamenti modificano l'aereo con il componente `Modifiers`; per i punti struttura il target è `Xenonauts.Common.Stats.HitPoints`, con `DeltaValue` = `DeltaMaximum` (con `DeltaValue` 0 sale solo il massimo e l'aereo risulta danneggiato finché non si ripara). L'armatura (`AirCombatArmorComponent`) invece usa `DeltaValue` 0, come nel gioco.
 - **Immagini:** non sono nei dati moddabili, ma il gioco carica PNG messi nella mod in `texture/strategy/<percorso>` e chiamati con `ST-::-<percorso>`. Gli originali stanno negli asset bundle e non si estraggono senza strumenti esterni: per modificarli si parte da una schermata.
 - I JSON del gioco contengono `Infinity`, che `ConvertFrom-Json` non accetta: per validarli sostituisci `:Infinity` con `:1e308`.
 
