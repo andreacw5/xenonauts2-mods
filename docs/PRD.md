@@ -194,7 +194,7 @@ Incompatibile con qualsiasi mod che modifichi i progetti di costruzione degli ae
 
 | | Better Base | Finance x3 | Better Aircraft | Aircraft Weapons +25% | Aircraft Costs -50% |
 |---|---|---|---|---|---|
-| Testata in gioco | sì | sì | no | no | sì (prezzo) |
+| Testata in gioco | sì | sì | sì (punti struttura) | no | sì (prezzo) |
 | Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no | no |
 | Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
 
@@ -230,6 +230,15 @@ Domande a cui risponde:
 4. Nome e descrizione del pezzo nuovo si vedono?
 
 Valori attesi per l'Angel (intercettore tier 1): 100 → 150, oppure 150 → 200 con Better Aircraft attiva.
+
+**Risultato (03/11/2026, nuova campagna, con Better Aircraft attiva):** l'Angel di partenza passa da 150/150 a **200/200** a ricerca finita.
+
+1. Sì: il modificatore `Xenonauts.Common.Stats.HitPoints` su un equipaggiamento funziona sugli aerei.
+2. Sì: il potenziamento arriva all'aereo già esistente, con i punti struttura correnti alzati insieme al massimo.
+3. **Da verificare:** un intercettore costruito dopo la ricerca.
+4. Non applicabile: il pezzo di rigenerazione sta in un attacco nascosto (`HardpointType` `Reactor`) e non compare tra gli equipaggiamenti. Il bonus è visibile solo nel valore di Health.
+
+Conferma anche Better Aircraft: l'Angel parte con 150 punti struttura invece di 100.
 
 ## Idee per il futuro
 
