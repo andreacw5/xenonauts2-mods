@@ -240,6 +240,21 @@ Valori attesi per l'Angel (intercettore tier 1): 100 → 150, oppure 150 → 200
 
 Conferma anche Better Aircraft: l'Angel parte con 150 punti struttura invece di 100, e Top Speed 2.700 km/h invece di 2.160 (×1,25; il gioco mostra `Speed` × 15 in km/h).
 
+### Versione 0.3.0: un equipaggiamento nuovo
+
+Prova se una mod può aggiungere un oggetto equipaggiabile con la stessa catena del gioco (ricerca → progetto di officina → oggetto disponibile). Tre file nuovi:
+
+- `item/aircraft_equipment/modtest_heavy_plating.json`: "Heavy Plating (MOD TEST)", figlia di `armor_tier1` (Ablative Plating) da cui eredita icona e aspetto sull'aereo. Modificatori: armatura +10 (Ablative 6), `HitPoints` +50, `AirCombatSpeedComponent` ×0,85; carico (`PowerUsage`) 5 invece di 3. È una scelta, non un potenziamento puro: più resistente ma più lenta e pesante.
+- `projects/research/modtest_heavy_plating_research.json`: ricerca "MOD TEST: Heavy Plating", senza prerequisiti, 1.500 punti, nessun effetto proprio.
+- `projects/engineering/modtest_heavy_plating.json`: progetto di officina sbloccato dalla ricerca (`ProjectPq` `Finished`), costo $50.000, durata `engineering_duration0` (60 punti). Finito, mette una quantità infinita della corazza nel magazzino di ogni base (`DeltaItemEffect`) e delle basi future (`AddItemToGeoBaseRequisitionEffect`), con lo stesso `ProjectFSM` del progetto dei missili (`engineering/aircraft_missiles_all_tier1.json`).
+
+Domande a cui risponde:
+
+1. Il progetto compare in officina dopo la ricerca?
+2. A progetto finito, Heavy Plating compare con "∞" nella lista dello slot di equipaggiamento?
+3. Montata sull'Angel, mostra armatura 10 al posto di 6 e Health +50, e il carico sale a 10/11?
+4. Il nome e la descrizione si vedono nel tooltip?
+
 ## Idee per il futuro
 
 - Tempi di costruzione che scalano con gli ingegneri (richiede un plugin di codice, vedi sopra).
