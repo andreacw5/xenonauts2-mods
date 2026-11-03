@@ -194,7 +194,7 @@ Incompatibile con qualsiasi mod che modifichi i progetti di costruzione degli ae
 
 | | Better Base | Finance x3 | Better Aircraft | Aircraft Weapons +25% | Aircraft Costs -50% |
 |---|---|---|---|---|---|
-| Testata in gioco | sì | sì | sì (punti struttura) | no | sì (prezzo) |
+| Testata in gioco | sì | sì | sì (punti struttura, velocità) | no | sì (prezzo) |
 | Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no | no |
 | Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
 
@@ -238,7 +238,7 @@ Valori attesi per l'Angel (intercettore tier 1): 100 → 150, oppure 150 → 200
 3. **Da verificare:** un intercettore costruito dopo la ricerca.
 4. Non applicabile: il pezzo di rigenerazione sta in un attacco nascosto (`HardpointType` `Reactor`) e non compare tra gli equipaggiamenti. Il bonus è visibile solo nel valore di Health.
 
-Conferma anche Better Aircraft: l'Angel parte con 150 punti struttura invece di 100.
+Conferma anche Better Aircraft: l'Angel parte con 150 punti struttura invece di 100, e Top Speed 2.700 km/h invece di 2.160 (×1,25; il gioco mostra `Speed` × 15 in km/h).
 
 ## Idee per il futuro
 
