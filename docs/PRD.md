@@ -94,17 +94,78 @@ Moltiplica per 3 `FlatRelationsFunding` (la quota mensile fissa) delle sei regio
 
 ### Compatibilità
 
-Incompatibile con Finance x10 e con qualsiasi mod che modifichi i template delle regioni. Compatibile con Better Base. Il nuovo finanziamento arriva dal pagamento mensile successivo.
+Incompatibile con Finance x10 e con qualsiasi mod che modifichi i template delle regioni. Compatibile con Better Base. **Richiede una nuova campagna:** il finanziamento viene scritto nel salvataggio all'inizio della partita (verificato nei salvataggi e confermato da un commento su Finance x10).
+
+## Mod 3: Better Aircraft
+
+Cartella: `BetterAircraft/` · Script: `tools/build-betteraircraft.ps1`
+
+### Problema
+
+Gli aerei Xenonaut vanilla sono fragili, lenti sul Geoscape e con poca autonomia: si passa molto tempo a riparare e rifornire. L'utente voleva aerei più forti senza rendere banali i combattimenti aerei.
+
+### Cosa fa
+
+Su tutti gli intercettori (tier 0–3) e le dropship (tier 1–3):
+
+| Componente | Effetto | Esempi vanilla → mod |
+|---|---|---|
+| `HitPoints` (`_val`, `_max`) | ×1,5 | intercettori 100/150/200 → 150/225/300; dropship 100/1000 → 150/1500 |
+| `Speed` (velocità sul Geoscape) | ×1,25 | intercettori 144/240/320 → 180/300/400 |
+| `FuelConsumptionRate` | ×0,75 (un terzo di autonomia in più) | 1,75 → 1,3125 |
+| `HitPointRegenerate` (riparazione) | ×2 | 0,0625 → 0,125 |
+
+**File toccati:** 7 profili in `template/strategy/aircraft/profiles/xenonaut/` e i master `masters/aircraft/xenonaut.json` e `xenonaut_dropship.json`.
+
+### Scelte e motivazioni
+
+- **Combattimento aereo invariato:** `ACSpeed`, accelerazione e virata restano vanilla, così gli scontri non diventano troppo facili.
+- **Si modificano i master** perché alcuni aerei non hanno un valore proprio e lo ereditano (per esempio i punti struttura dell'intercettore tier 3 e della dropship tier 1). `masters/aircraft/aircraft.json` invece non si tocca: ne ereditano anche gli UFO.
+- **Intercettore del tutorial escluso:** i suoi valori (20 punti struttura) sono parte dello scenario scritto. Eredita comunque la velocità e il consumo del master.
+- L'intercettore tier 0 non ha una propria riparazione e la eredita da `aircraft.json` (0,04), quindi resta vanilla.
+
+### Compatibilità
+
+Incompatibile con qualsiasi mod che modifichi i profili o i master degli aerei Xenonaut. Compatibile con le altre tre mod. Da verificare in gioco se gli aerei già costruiti ricevono i nuovi valori.
+
+## Mod 4: Aircraft Weapons +25%
+
+Cartella: `AircraftWeapons/` · Script: `tools/build-aircraftweapons.ps1`
+
+### Problema
+
+Separata da Better Aircraft su richiesta dell'utente: chi vuole aerei più resistenti non per forza vuole anche più danno.
+
+### Cosa fa
+
+Moltiplica per 1,25 `ACWeaponDamage` (`_min`, `_val`, `_max`) di tutte le armi aeree Xenonaut:
+
+| Arma | Vanilla (medio, tier 1–4) | Mod |
+|---|---|---|
+| Cannoni | 4 / 6 / 10 / 25 | 5 / 7,5 / 12,5 / 31,25 |
+| Missili | 20 / 28 / 40 / 50 | 25 / 35 / 50 / 62,5 |
+| Siluri | 45 / 68 / 90 / 140 | 56,25 / 85 / 112,5 / 175 |
+| Lance (tier 1–3) | 15 / 15 / 40 | 18,75 / 18,75 / 50 |
+
+**File toccati:** 14 template in `template/strategy/item/aircraft_equipment/`. `weapon_lance_2` non ha un danno proprio e lo eredita da `weapon_lance_1`.
+
+### Scelte e motivazioni
+
+- Solo il danno: distruzione dell'armatura, gittata, ricarica e munizioni restano vanilla.
+- Nessuna arma UFO eredita dai file modificati (controllato), e i master delle armi non si toccano. Il missile del tutorial è escluso.
+- Il moltiplicatore è una costante (`$multiplier`) nello script, come in Finance x3.
+
+### Compatibilità
+
+Incompatibile con qualsiasi mod che modifichi le armi aeree Xenonaut. Compatibile con le altre tre mod. Da verificare in gioco se le armi già montate ricevono i nuovi valori.
 
 ## Stato
 
-| | Better Base | Finance x3 |
-|---|---|---|
-| Testata in gioco | sì | sì |
-| Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) |
-| Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` |
-
-**Da fare:** la versione pubblicata di entrambe contiene ancora "Built for Xenonauts 2 v7.27.13" nella descrizione, perché il gioco l'ha reinserita durante il caricamento. Nel repo è già stata tolta: va caricato un aggiornamento dal gioco, riavviandolo prima.
+| | Better Base | Finance x3 | Better Aircraft | Aircraft Weapons +25% |
+|---|---|---|---|---|
+| Testata in gioco | sì | sì | no | no |
+| Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no |
+| Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
 
 ## Idee per il futuro
 

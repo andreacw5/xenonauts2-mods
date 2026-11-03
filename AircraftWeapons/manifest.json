@@ -1,0 +1,36 @@
+﻿{
+    "version": "0.1.0",
+    "asset": {
+        "UID": "d13a1672-510d-49ee-87e6-2119df9f7a12",
+        "Name": "Aircraft Weapons +25%",
+        "Description": "Every Xenonaut aircraft weapon deals 25% more damage: cannons, missiles, torpedoes and lances, all tiers. UFO weapons are unchanged.\n\nDAMAGE PER HIT (average)\n- Cannons: 5 / 7.5 / 12.5 / 31.25 (was 4 / 6 / 10 / 25)\n- Missiles: 25 / 35 / 50 / 62.5 (was 20 / 28 / 40 / 50)\n- Torpedoes: 56.25 / 85 / 112.5 / 175 (was 45 / 68 / 90 / 140)\n- Lances: 18.75 / 18.75 / 50 (was 15 / 15 / 40)\n\nArmour destruction, range, reload time and ammo are unchanged.\n\nCOMPATIBILITY\n- Replaces the templates of the Xenonaut aircraft weapons: do not use together with any mod that edits the same files.\n- Works with Better Aircraft, Better Base and Finance x3.",
+        "Visibility": "Private",
+        "Author": "andreacw96",
+        "Website": "https://steamcommunity.com/id/andreacw96/",
+        "Credits": "",
+        "Tags": [
+            "Balance",
+            "Aircraft",
+            "Weapons"
+        ],
+        "Dependencies": [
+            {
+                "UID": "7409d306-8813-4ae2-b2e2-8e94d4dc39f1",
+                "Version": {
+                    "&v": "7.28.0"
+                },
+                "DisplayName": "Xenonauts"
+            }
+        ],
+        "LoadBefore": [],
+        "LoadAfter": [],
+        "IncompatibleWith": [],
+        "RemoveFiles": [],
+        "SupportedLanguages": [
+            "en-US"
+        ],
+        "Version": "1.0.0",
+        "$t": "14"
+    },
+    "$t": "15"
+}

@@ -6,14 +6,18 @@ Mods for [Xenonauts 2](https://store.steampowered.com/app/538030/Xenonauts_2/) b
 |---|---|---|
 | [Better Base](BetterBase) | [3831149512](https://steamcommunity.com/sharedfiles/filedetails/?id=3831149512) | Faster construction (6 / 9 / 12 days), bigger facilities, cheaper staff and upkeep |
 | [Finance x3](FinanceX3) | [3831149991](https://steamcommunity.com/sharedfiles/filedetails/?id=3831149991) | Triples the base monthly funding of every region |
+| [Better Aircraft](BetterAircraft) | not published yet | Xenonaut aircraft: hull +50%, Geoscape speed +25%, fuel use -25%, repair x2 |
+| [Aircraft Weapons +25%](AircraftWeapons) | not published yet | Every Xenonaut aircraft weapon deals 25% more damage |
 
 Built against game version **7.28.0**.
 
 ## Layout
 
 ```
-BetterBase/   the mod as the game loads it (manifest.json, preview.png, template/)
-FinanceX3/    idem
+BetterBase/       the mod as the game loads it (manifest.json, preview.png, template/)
+FinanceX3/        idem
+BetterAircraft/   idem
+AircraftWeapons/  idem
 tools/        PowerShell scripts that generate the template files from the game's data
 vanilla/      game data extracted by tools/extract-vanilla.ps1 (git-ignored)
 docs/PRD.md   what each mod changes and why (Italian)
@@ -30,7 +34,7 @@ Each mod folder there is a directory junction pointing into this repo, so the ga
 
 ```powershell
 $mods = "$env:USERPROFILE\AppData\LocalLow\Goldhawk Interactive\Xenonauts 2\Mods"
-foreach ($m in 'BetterBase', 'FinanceX3') { New-Item -ItemType Junction -Path "$mods\$m" -Target "$PWD\$m" }
+foreach ($m in 'BetterBase', 'FinanceX3', 'BetterAircraft', 'AircraftWeapons') { New-Item -ItemType Junction -Path "$mods\$m" -Target "$PWD\$m" }
 ```
 
 Do not subscribe to these mods on the Workshop while the local copies are active: the game would load the same mod twice.
@@ -41,6 +45,8 @@ Do not subscribe to these mods on the Workshop while the local copies are active
 .\tools\extract-vanilla.ps1            # unpack the new game data into vanilla/
 .\tools\build-betterbase.ps1           # regenerate BetterBase/template
 .\tools\build-financex3.ps1            # regenerate FinanceX3/template
+.\tools\build-betteraircraft.ps1       # regenerate BetterAircraft/template
+.\tools\build-aircraftweapons.ps1      # regenerate AircraftWeapons/template
 .\tools\diff.ps1 -ModDir .\BetterBase  # check: only the intended values differ from vanilla
 git diff                               # see what the patch changed in the mod files
 ```
@@ -56,8 +62,11 @@ Then bump the dependency version in each `manifest.json`, test in game, and uplo
 | `extract-vanilla.ps1` | Extracts `moddable_content.zip` from the game install into `vanilla/` |
 | `build-betterbase.ps1` | Writes Better Base's building and staff templates (build times, capacities, slots, costs) |
 | `build-financex3.ps1` | Writes Finance x3's region templates (flat funding x3) |
+| `build-betteraircraft.ps1` | Writes Better Aircraft's aircraft profiles and masters (hull, speed, fuel use, repair) |
+| `build-aircraftweapons.ps1` | Writes Aircraft Weapons +25%'s weapon templates (damage x1.25) |
 | `diff.ps1` | Lists every value a mod changes compared to `vanilla/` |
 | `preview-financex3.ps1` | Draws Finance x3's preview image (`-TitleOnly` for the published version) |
+| `preview-card.ps1` | Draws a title-only preview in the same style (used for the aircraft mods) |
 
 ## Credits
 
