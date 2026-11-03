@@ -258,6 +258,18 @@ Domande a cui risponde:
 
 **Icona.** Le immagini non sono tra i dati moddabili (`moddable_content.zip` contiene solo `.json`, `.csv`, `.txt`): stanno negli asset bundle. Dal manifest `generated_texture_strategy_1.manifest`, l'icona `ST-::-ui/aircraft_weapons/armor_tier1.png` è registrata come `Assets/Assets/xenonauts/texture/strategy/ui/aircraft_weapons/armor_tier1.png`. Per analogia con i template (`ST-::-` → `template/strategy/`), l'icona nuova sta in `ResearchTest/texture/strategy/ui/aircraft_weapons/modtest_heavy_plating.png` e la corazza la chiama `ST-::-ui/aircraft_weapons/modtest_heavy_plating.png`. È ricavata dall'icona dell'Ablative Plating, ritagliata da una schermata del gioco e ricolorata (l'originale non si può estrarre dal bundle senza strumenti esterni). Se lo slot mostra un'icona vuota, il gioco non carica immagini dalle mod: in quel caso si torna all'icona dell'Ablative Plating.
 
+**Risultato (03/11/2026, nuova campagna, con Better Aircraft attiva):** funziona tutto.
+
+1. Sì: dopo la ricerca il progetto compare in officina (categoria Air Weapons), con nome, descrizione, $50.000 e 11 ore.
+2. Sì: a progetto finito Heavy Plating si monta nello slot di equipaggiamento dell'Angel.
+3. Sì: Armour 0/6 → 0/10, Health 200/200 → 200/250 (il massimo sale di 50, il valore attuale no e poi si ripara: 230/250 due giorni dopo), Payload 8/11 → 10/11. Top Speed e Turn Rate nell'hangar non cambiano: il −15% vale solo in combattimento aereo, non verificato.
+4. Sì: il nome "HEAVY PLATING (MOD TEST)" compare sullo slot.
+5. **Sì: l'icona nuova viene caricata.** Le mod possono aggiungere immagini mettendole in `texture/strategy/...` e chiamandole con `ST-::-...`.
+
+L'immagine del progetto in officina era quella dei missili (copiata con la struttura del progetto): ora usa `ui/engineering/aircraft_armour_tier2.png`.
+
+Ancora aperto dal test della 0.2.0: un intercettore **costruito dopo** la ricerca Reinforced Airframe riceve il pezzo rinforzato?
+
 ## Idee per il futuro
 
 - Tempi di costruzione che scalano con gli ingegneri (richiede un plugin di codice, vedi sopra).

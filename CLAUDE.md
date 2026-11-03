@@ -34,6 +34,18 @@ Non toccare mai i file dentro la cartella del gioco: si lavora su `vanilla/` (es
 - Regioni: `template/strategy/geo_region/*.json`. `FlatRelationsFunding` è la quota fissa, `VariableRelationsFunding` la parte che dipende dai rapporti con la regione.
 - Variabili globali utili: `template/common/global_variables/` (per esempio `engineering_point_generation_multiplier`).
 - La velocità di costruzione **non** dipende dagli ingegneri e i dati non lo permettono: servirebbe un plugin di codice (BepInEx + Harmony). Nel codice esiste `ConstructionAssignmentEffects`, ma nessun dato lo usa.
+- Aerei: profili in `template/strategy/aircraft/profiles/xenonaut/`, valori mancanti ereditati da `masters/aircraft/xenonaut.json` (`aircraft.json` è condiviso con gli UFO: non toccarlo). Il prezzo d'acquisto è il `CashPq` dei progetti `projects/engineering/aircraft_*_tier*.json`, non il `Cash` dei profili. I motori potenziati **sostituiscono** la velocità (`Speed` `Replace`).
+- Nel gioco la velocità mostrata in km/h è `Speed` × 15.
+
+## Aggiungere contenuti nuovi (verificato in gioco, vedi `ResearchTest/` e docs/PRD.md)
+
+- Una mod può aggiungere **file nuovi**, non solo sostituirli: ricerche, progetti di officina, oggetti. Non c'è un indice da aggiornare: il gioco li carica dalla cartella.
+- Ricerche e progetti nuovi compaiono **solo in una nuova campagna**.
+- Nome e descrizione senza file di traduzione: `LocalizableGUID` con GUID nuovi e `"Request":"Ignore"`, più i componenti `Name` e `Description` con il testo.
+- Effetti utili nel `ProjectFSM` (`EntryEffects.Finished`): `UpgradeItemsEffect` sostituisce un oggetto su tutti gli aerei del giocatore (arriva anche agli aerei esistenti); `DeltaItemEffect` con `Quantity: Infinity` + `AddItemToGeoBaseRequisitionEffect` rendono un oggetto disponibile in tutte le basi. Modello: `projects/engineering/aircraft_missiles_all_tier1.json`.
+- Gli equipaggiamenti modificano l'aereo con il componente `Modifiers`; per i punti struttura il target è `Xenonauts.Common.Stats.HitPoints`.
+- **Immagini:** non sono nei dati moddabili, ma il gioco carica PNG messi nella mod in `texture/strategy/<percorso>` e chiamati con `ST-::-<percorso>`. Gli originali stanno negli asset bundle e non si estraggono senza strumenti esterni: per modificarli si parte da una schermata.
+- I JSON del gioco contengono `Infinity`, che `ConvertFrom-Json` non accetta: per validarli sostituisci `:Infinity` con `:1e308`.
 
 ## Regole per modificare i template
 
