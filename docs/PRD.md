@@ -194,7 +194,7 @@ Incompatibile con qualsiasi mod che modifichi i progetti di costruzione degli ae
 
 | | Better Base | Finance x3 | Better Aircraft | Aircraft Weapons +25% | Aircraft Costs -50% |
 |---|---|---|---|---|---|
-| Testata in gioco | sì | sì | no | no | no |
+| Testata in gioco | sì | sì | no | no | sì (prezzo) |
 | Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no | no |
 | Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
 
@@ -210,7 +210,12 @@ Domande a cui risponde:
 2. La ricerca compare in laboratorio dall'inizio, con il suo nome e la sua descrizione?
 3. Si completa senza errori?
 
-Se funziona, il passo successivo è dare alla ricerca un effetto vero (per esempio `UpgradeItemsEffect` su un'arma) e verificare che valga anche per gli aerei costruiti dopo.
+**Risultato (03/11/2026, gioco 7.28.0):** in una **nuova campagna** la ricerca compare in laboratorio; caricando un salvataggio esistente no. Quindi:
+
+- il gioco carica i template **nuovi** aggiunti da una mod, non solo quelli sostituiti;
+- l'elenco delle ricerche viene fissato all'inizio della campagna: una mod che aggiunge ricerche richiede una nuova partita.
+
+Il passo successivo è dare alla ricerca un effetto vero (per esempio `UpgradeItemsEffect` su un'arma) e verificare che valga anche per gli aerei costruiti dopo.
 
 ## Idee per il futuro
 
