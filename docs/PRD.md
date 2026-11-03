@@ -115,7 +115,9 @@ Su tutti gli intercettori (tier 0–3) e le dropship (tier 1–3):
 | `FuelConsumptionRate` | ×0,75 (un terzo di autonomia in più) | 1,75 → 1,3125 |
 | `HitPointRegenerate` (riparazione) | ×2 | 0,0625 → 0,125 |
 
-**File toccati:** 7 profili in `template/strategy/aircraft/profiles/xenonaut/` e i master `masters/aircraft/xenonaut.json` e `xenonaut_dropship.json`.
+**File toccati:** 7 profili in `template/strategy/aircraft/profiles/xenonaut/`, i master `masters/aircraft/xenonaut.json` e `xenonaut_dropship.json`, e i motori potenziati `engine_angel_tier2.json` e `engine_phantom_tier2.json`.
+
+I motori potenziati (miglioria in officina) **sostituiscono** la velocità con un valore fisso: Angel 220, Phantom 300. Senza scalarli, dopo la miglioria il bonus andrebbe perso, e il Phantom (già a 300 con la mod) non guadagnerebbe nulla. Con la mod diventano 275 e 375.
 
 ### Scelte e motivazioni
 

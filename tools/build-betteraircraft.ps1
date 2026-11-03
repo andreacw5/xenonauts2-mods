@@ -64,4 +64,22 @@ foreach ($rel in $files) {
     [IO.File]::WriteAllText($out, $text, (New-Object Text.UTF8Encoding $false))
     $changed++
 }
+# Engine upgrades replace the Geoscape speed with a fixed value (Angel 220, Phantom 300), which would
+# undo the speed bonus above once researched: scale those replacements too.
+$engines = 'engine_angel_tier2', 'engine_phantom_tier2'
+foreach ($e in $engines) {
+    $rel = "item\aircraft_equipment\$e.json"
+    $text = [IO.File]::ReadAllText((Join-Path $src $rel))
+    $pattern = '("Target":"Common\.Components\.Speed","Type":"Replace","DeltaMinimum":[-0-9.E+]+,"DeltaValue":)([-0-9.E+]+)(,"DeltaMaximum":)([-0-9.E+]+)'
+    if ([regex]::Matches($text, $pattern).Count -ne 1) { throw "$e : Speed replacement not found exactly once" }
+    $text = [regex]::Replace($text, $pattern, {
+        param($x)
+        $x.Groups[1].Value + (Format-Number ([double]::Parse($x.Groups[2].Value, $inv) * $scale['Speed'])) +
+        $x.Groups[3].Value + (Format-Number ([double]::Parse($x.Groups[4].Value, $inv) * $scale['Speed']))
+    })
+    $out = Join-Path $dst $rel
+    New-Item -ItemType Directory -Force (Split-Path $out) | Out-Null
+    [IO.File]::WriteAllText($out, $text, (New-Object Text.UTF8Encoding $false))
+    $changed++
+}
 "Better Aircraft: $changed templates written"

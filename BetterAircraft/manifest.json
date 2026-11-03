@@ -3,7 +3,7 @@
     "asset": {
         "UID": "c9f87105-4912-4b10-b354-586e4eeee6a7",
         "Name": "Better Aircraft",
-        "Description": "Makes the Xenonaut interceptors and dropships sturdier, faster on the Geoscape and longer-ranged. Air combat handling and weapons stay as in the base game.\n\nALL XENONAUT AIRCRAFT\n- Hull: +50% (interceptors 150 / 225 / 300, was 100 / 150 / 200; dropships 150 / 1,500, was 100 / 1,000)\n- Geoscape speed: +25% (interceptors 180 / 300 / 400, was 144 / 240 / 320)\n- Fuel consumption: -25% (a third more range)\n- Hull repair speed: x2\n\nCOMPATIBILITY\n- Replaces the Xenonaut aircraft profiles and the Xenonaut aircraft masters: do not use together with any mod that edits the same files.\n- UFOs are not affected.\n- Works with Aircraft Weapons +25%, Better Base and Finance x3.",
+        "Description": "Makes the Xenonaut interceptors and dropships sturdier, faster on the Geoscape and longer-ranged. Air combat handling and weapons stay as in the base game.\n\nALL XENONAUT AIRCRAFT\n- Hull: +50% (interceptors 150 / 225 / 300, was 100 / 150 / 200; dropships 150 / 1,500, was 100 / 1,000)\n- Geoscape speed: +25% (interceptors 180 / 300 / 400, was 144 / 240 / 320; upgraded Angel and Phantom engines 275 / 375, was 220 / 300)\n- Fuel consumption: -25% (a third more range)\n- Hull repair speed: x2\n\nCOMPATIBILITY\n- Replaces the Xenonaut aircraft profiles, the Xenonaut aircraft masters and the two upgraded engines: do not use together with any mod that edits the same files.\n- UFOs are not affected.\n- Works with Aircraft Weapons +25%, Better Base and Finance x3.",
         "Visibility": "Private",
         "Author": "andreacw96",
         "Website": "https://steamcommunity.com/id/andreacw96/",
