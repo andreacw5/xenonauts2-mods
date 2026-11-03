@@ -161,13 +161,42 @@ Moltiplica per 1,25 `ACWeaponDamage` (`_min`, `_val`, `_max`) di tutte le armi a
 
 Incompatibile con qualsiasi mod che modifichi le armi aeree Xenonaut. Compatibile con le altre tre mod. Da verificare in gioco se le armi già montate ricevono i nuovi valori.
 
+## Mod 5: Aircraft Costs -50%
+
+Cartella: `AircraftCosts/` · Script: `tools/build-aircraftcosts.ps1`
+
+### Problema
+
+Gli aerei costano molto sia da comprare sia da mantenere. L'utente voleva ridurre solo i costi in dollari, lasciando invariati i materiali.
+
+### Cosa fa
+
+| Voce | Dove | Vanilla | Mod |
+|---|---|---|---|
+| Prezzo intercettori (tier 1–3) | `CashPq` dei progetti `projects/engineering/aircraft_interceptor_tier*.json` | $500.000 / 750.000 / 1.200.000 | $250.000 / 375.000 / 600.000 |
+| Prezzo dropship (tier 1–3) | `CashPq` dei progetti `projects/engineering/aircraft_dropship_tier*.json` | $300.000 / 500.000 / 1.000.000 | $150.000 / 250.000 / 500.000 |
+| Mantenimento di tutti gli aerei | variabile globale `aircraft_expense_multiplier` | 1,0 | 0,5 |
+
+**File toccati:** 6 progetti in `template/strategy/projects/engineering/` e `template/common/global_variables/aircraft_expense_multiplier.json`.
+
+### Scelte e motivazioni
+
+- **Il prezzo vero è nel progetto di officina**, non nel `Cash` dei profili degli aerei (che ha valori incoerenti, come 1.000 per il tier 2). Così la mod non tocca i profili e non va in conflitto con Better Aircraft.
+- **Mantenimento tramite la variabile globale:** un solo file, vale per tutti gli aerei, compresi quelli già costruiti.
+- **Materiali invariati** (`ItemsPq`), su richiesta dell'utente.
+- Il bonus regionale dell'Unione Sovietica sottrae 0,25 dalla stessa variabile: con la mod il moltiplicatore scende a 0,25 (vanilla 0,75).
+
+### Compatibilità
+
+Incompatibile con qualsiasi mod che modifichi i progetti di costruzione degli aerei o la variabile del mantenimento. Compatibile con tutte le altre mod del repo (verificato che non condivide file con loro né con le mod del Workshop installate).
+
 ## Stato
 
-| | Better Base | Finance x3 | Better Aircraft | Aircraft Weapons +25% |
-|---|---|---|---|---|
-| Testata in gioco | sì | sì | no | no |
-| Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no |
-| Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
+| | Better Base | Finance x3 | Better Aircraft | Aircraft Weapons +25% | Aircraft Costs -50% |
+|---|---|---|---|---|---|
+| Testata in gioco | sì | sì | no | no | no |
+| Pubblicata sul Workshop | sì (1.0.0) | sì (1.0.0) | no | no | no |
+| Anteprima | fatta dall'utente | `tools/preview-financex3.ps1 -TitleOnly` | `tools/preview-card.ps1` | `tools/preview-card.ps1` | `tools/preview-card.ps1` |
 
 ## Idee per il futuro
 

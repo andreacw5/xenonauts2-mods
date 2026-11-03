@@ -1,0 +1,36 @@
+﻿{
+    "version": "0.1.0",
+    "asset": {
+        "UID": "09b09e2b-f6ca-4f80-a473-f686267e0465",
+        "Name": "Aircraft Costs -50%",
+        "Description": "Halves the purchase price and the monthly upkeep of every Xenonaut aircraft. Material costs, stats and weapons stay as in the base game.\n\nPURCHASE PRICE\n- Interceptors: $250,000 / $375,000 / $600,000 (was $500,000 / $750,000 / $1,200,000)\n- Dropships: $150,000 / $250,000 / $500,000 (was $300,000 / $500,000 / $1,000,000)\n\nMONTHLY UPKEEP\n- Every aircraft: -50% (interceptors $50,000 / $75,000 / $100,000, was $100,000 / $150,000 / $200,000)\n- The Soviet Union regional bonus still cuts upkeep by a further 25% of the base value.\n\nCOMPATIBILITY\n- Replaces the six aircraft construction projects and the aircraft upkeep multiplier: do not use together with any mod that edits the same files.\n- Works with Better Aircraft, Aircraft Weapons +25%, Better Base and Finance x3.",
+        "Visibility": "Private",
+        "Author": "andreacw96",
+        "Website": "https://steamcommunity.com/id/andreacw96/",
+        "Credits": "",
+        "Tags": [
+            "Balance",
+            "Aircraft",
+            "Economy"
+        ],
+        "Dependencies": [
+            {
+                "UID": "7409d306-8813-4ae2-b2e2-8e94d4dc39f1",
+                "Version": {
+                    "&v": "7.28.0"
+                },
+                "DisplayName": "Xenonauts"
+            }
+        ],
+        "LoadBefore": [],
+        "LoadAfter": [],
+        "IncompatibleWith": [],
+        "RemoveFiles": [],
+        "SupportedLanguages": [
+            "en-US"
+        ],
+        "Version": "1.0.0",
+        "$t": "14"
+    },
+    "$t": "15"
+}
