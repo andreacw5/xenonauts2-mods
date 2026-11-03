@@ -1,6 +1,6 @@
 # PRD: mod per Xenonauts 2
 
-Autore: andreacw96 · Versione del gioco: 7.27.13 · Ultimo aggiornamento: 31/10/2026
+Autore: andreacw96 · Versione del gioco: 7.28.0 · Ultimo aggiornamento: 03/11/2026
 
 ## Obiettivo
 

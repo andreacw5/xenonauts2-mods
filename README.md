@@ -7,7 +7,7 @@ Mods for [Xenonauts 2](https://store.steampowered.com/app/538030/Xenonauts_2/) b
 | [Better Base](BetterBase) | [3831149512](https://steamcommunity.com/sharedfiles/filedetails/?id=3831149512) | Faster construction (6 / 9 / 12 days), bigger facilities, cheaper staff and upkeep |
 | [Finance x3](FinanceX3) | [3831149991](https://steamcommunity.com/sharedfiles/filedetails/?id=3831149991) | Triples the base monthly funding of every region |
 
-Built against game version **7.27.13**.
+Built against game version **7.28.0**.
 
 ## Layout
 
